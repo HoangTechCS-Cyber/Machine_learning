@@ -1,16 +1,11 @@
-
-def sliding_window(num_list, k):
-    size = len(num_list)
-    if k > size or k < 1:
-        return []
-    # list ketqua
-    result =  []
-    
-    #solution 
-    for i in range(size-k+1):
-        result.append(max(num_list[i:i+k]))
+def slidigz_window(arr, k):
+    result = []
+    window_start = 0
+    window_sum = 0
+    for window_end in range(len(arr)):
+        window_sum += arr[window_end]
+        if window_end >= k - 1:
+            result.append(window_sum)
+            window_sum -= arr[window_start]
+            window_start += 1
     return result
-    
-num_list = [3, 4, 5, 1, -44, 5, 10, 12, 33, 1]
-k = 3
-print(sliding_window(num_list, k))
